@@ -1,0 +1,46 @@
+.en_rnl_shipping_rules_setting_section .en_sr_add_btn {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.en_sr_form_control {
+	display: flex;
+	flex-direction: column;
+	padding: 10px;
+	flex: 1;
+}
+
+.en_sr_form_control label {
+	font-weight: 500 !important;
+	margin-bottom: 5px !important;
+}
+
+.en_sr_form_control input[type='text'] {
+	padding: 4px;
+}
+
+.en_sr_form_control select {
+	max-width: 100% !important;
+}
+
+.group_sr_form_control {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+
+.en_sr_err {
+	color: red !important;
+	font-size: 11px;
+}
+
+.en_rnl_shipping_rules_setting_section p.submit {
+	display: none !important;
+}
+
+label[for='en_sr_service']::after,
+label[for='en_sr_service_rate']::after,
+label[for='en_sr_service_category']::after {
+	content: " *";
+	color: red;
+}

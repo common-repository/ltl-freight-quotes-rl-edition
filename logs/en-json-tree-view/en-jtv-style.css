@@ -1,0 +1,236 @@
+.en_jtv {
+  font-family: "Courier New", Courier, monospace;
+  white-space: nowrap;
+}
+
+.en_jtv ul {
+  list-style-type: none;
+  padding: 0;
+  margin-left: 3em;
+  margin-top: 0;
+  margin-bottom: 0;
+  counter-reset: childIndex;
+}
+
+.en_jtv li:not(:first-child) {
+  counter-increment: childIndex;
+}
+
+.en_jtv li::before {
+  content: counter(childIndex);
+  color: lightgray;
+  text-align: right;
+  display: inline-block;
+  min-width: 2.5em;
+  margin-left: -3em;
+  padding-right: 0.5em;
+}
+
+.en_jtv li.en_folded > span.en_jtv_number_of_elements::before {
+  content: attr(data-item-count);
+  display: inline-block;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  color: gray;
+}
+
+.en_jtv li > div.en_key {
+  display: inline;
+}
+
+.en_jtv li > div.en_key div.en_jtv_copy {
+  display: inline;
+  position: relative;
+}
+
+.en_jtv li > div.en_key .en_jtv_copy::after {
+  content: "\1f4cb";
+  opacity: 0.33;
+  font-size: 1em;
+  background-color: #efefef;
+  visibility: hidden;
+  display: block;
+  position: absolute;
+  color: #111;
+  transition: background-color 0.5s, visibility 0s 0.3s;
+  text-align: center;
+  border-radius: 0.2em;
+  width: 1.4em;
+  height: 1.4em;
+  bottom: -0.2em;
+  left: 0.2em;
+  cursor: pointer;
+}
+
+.en_jtv li > div.en_key .en_jtv_copy:hover::after {
+  opacity: 1;
+  box-shadow: 0 0 3px black;
+}
+
+.en_jtv li > div.en_key:hover .en_jtv_copy::after {
+  visibility: visible;
+  transition: background-color 0.5s, visibility 0s 0.2s;
+}
+
+.en_jtv li > div.en_key:hover .en_jtv_copy .en_jtv_copied::after {
+  background-color: #0c0;
+  transition: background-color 0s;
+}
+
+.en_jtv li > div.en_key:hover .en_jtv_copy .en_jtv_not_copied::after {
+  background-color: #e55;
+  transition: background-color 0s;
+}
+
+.en_jtv li > div.en_key > span {
+  color: darkslateblue;
+}
+
+.en_jtv li > div.en_key > span:hover {
+  background-color: lightblue;
+}
+
+.en_jtv li.en_folder.en_folded > ul {
+  display: none;
+}
+
+.en_jtv li.en_folder > div.en_key > span::before {
+  content: "\2212";
+  opacity: 0.33;
+  color: #111;
+  background-color: #e0eaef;
+  text-align: center;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: -2.9em;
+  margin-right: 1.9em;
+  cursor: pointer;
+  border-radius: 0.2em;
+}
+
+.en_jtv li.en_folder.en_folded > div.en_key > span::before {
+  content: "+";
+}
+
+.en_jtv li.en_folder > div.en_key:hover > span::before {
+  opacity: 1;
+}
+
+.en_jtv .en_jtv_show_null_value {
+  color: gray;
+  font-weight: bold;
+}
+
+.en_jtv .en_jtv_numeric_value {
+  color: darkblue;
+  font-weight: bold;
+}
+
+.en_jtv .en_jtv_string_value {
+  color: brown;
+  font-weight: bold;
+}
+/*json tree view*/
+.response {
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+
+.overlay {
+  position: fixed;
+  top: 100px;
+  bottom: 100px;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+  height: 80%;
+  overflow-y: scroll;
+}
+
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 66%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+.popup .close:hover {
+  color: #06D85F;
+}
+
+.popup .content {
+  height: 30%;
+  overflow: auto;
+}
+
+@media screen and (max-width: 700px) {
+  .box {
+      width: 70%;
+  }
+
+  .popup {
+      width: 70%;
+  }
+}
+/*Logs*/
+.en_logs {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.en_logs td, .en_logs th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.en_logs tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.en_logs tr:hover {
+  background-color: #ddd;
+}
+
+.en_logs th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background: #2271b1;
+  border-color: #2271b1;
+  color: #fff;
+}
+
+.en_logs + .submit {
+  display: none;
+}
